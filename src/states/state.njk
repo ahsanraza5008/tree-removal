@@ -6,7 +6,6 @@ pagination:
   alias: state
 permalink: "/{{ state.slug }}/"
 ---
-{% from "cta-block.njk" import ctaBlock %}
 {% from "breadcrumb.njk" import breadcrumb %}
 {% set sp = stateSpintax %}
 {% set list = citiesByState[state.code] or [] %}
@@ -19,9 +18,6 @@ permalink: "/{{ state.slug }}/"
       {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Service Areas", url: "/service-areas/" }, { name: state.name }]) }}
       <h1 id="hero-title">{{ sp.h1 | pick(T) }}</h1>
       <p class="lede">{{ sp.intro | pick(T) }}</p>
-      <ul class="proof">
-        {% for p in sp.proof[(T.v) % 4] %}<li>{{ p | fill(T) }}</li>{% endfor %}
-      </ul>
       <div class="hero-actions">
         <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
         <p class="micro"><span class="live">Lines open now.</span> {{ sp.micro | pick(T) }}</p>
@@ -31,7 +27,6 @@ permalink: "/{{ state.slug }}/"
   </div>
 </section>
 
-{{ ctaBlock(sp.cta1 | pick(T), sp.cta1Sub | pick(T), business) }}
 
 <section class="sec" aria-labelledby="svc-title">
   <div class="wrap">
@@ -77,7 +72,6 @@ permalink: "/{{ state.slug }}/"
   </div>
 </section>
 
-{{ ctaBlock(sp.cta2 | pick(T), sp.cta2Sub | pick(T), business) }}
 
 <section class="sec" aria-labelledby="cities-title" id="cities">
   <div class="wrap">

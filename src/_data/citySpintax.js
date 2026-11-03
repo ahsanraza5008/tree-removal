@@ -6,4 +6,5 @@ module.exports = {
   ...require("../../lib/city-spintax/body.js"),
   ...require("../../lib/city-spintax/trust.js"),
   ...require("../../lib/city-spintax/local.js"),
+  ...require("../../lib/city-spintax/headings.js"),
 };

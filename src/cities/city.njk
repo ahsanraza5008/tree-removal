@@ -6,22 +6,18 @@ pagination:
   alias: city
 permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
 ---
-{% from "cta-block.njk" import ctaBlock %}
 {% from "breadcrumb.njk" import breadcrumb %}
 {% set cs = citySpintax %}
 {% set near = city.nearbyCities %}
 {% set nearUrl = "/" + city.stateSlug + "/" %}
 
-{# 1–3. Hero: H1, above-fold intro, primary call #}
+{# 1–2. Hero: H1, above-fold intro, primary call #}
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
     <div>
       {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Service Areas", url: "/service-areas/" }, { name: city.stateName, url: nearUrl }, { name: city.city }]) }}
       <h1 id="hero-title">{{ h1 }}</h1>
       <p class="lede">{{ cs.intro | pick(T) }}</p>
-      <ul class="proof">
-        {% for p in cs.proof[T.v % 3] %}<li>{{ p | fill(T) }}</li>{% endfor %}
-      </ul>
       <div class="hero-actions">
         <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
         <p class="micro"><span class="live">Lines open now.</span> {{ cs.micro | pick(T) }}</p>
@@ -31,7 +27,6 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
   </div>
 </section>
 
-{{ ctaBlock(cs.cta1 | pick(T), cs.cta1Sub | pick(T), business) }}
 
 {# 4. USP blocks #}
 <section class="sec sec--wood" aria-label="Why call for tree removal in {{ city.city }}">
@@ -73,8 +68,6 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
   </div>
 </section>
 
-{# 7. CTA #2 #}
-{{ ctaBlock(cs.cta2 | pick(T), cs.cta2Sub | pick(T), business) }}
 
 {# 8. Why choose us #}
 <section class="sec" aria-labelledby="why-title">
@@ -106,8 +99,6 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
   </div>
 </section>
 
-{# 10. CTA #3 #}
-{{ ctaBlock(cs.cta3 | pick(T), cs.cta1Sub | pick(T, "c3"), business) }}
 
 {# 11. Pricing #}
 <section class="sec" aria-labelledby="price-title">
@@ -132,8 +123,6 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
   </div>
 </section>
 
-{# 12. CTA #4 #}
-{{ ctaBlock(cs.cta4 | pick(T), cs.cta2Sub | pick(T, "c4"), business) }}
 
 {# 13. Local conditions #}
 <section class="sec sec--alt" aria-labelledby="cond-title">
@@ -180,7 +169,7 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
 <section class="sec sec--alt" aria-labelledby="near-title">
   <div class="wrap">
     <div class="sec-head">
-      <h2 id="near-title">Also serving these {{ city.stateName }} communities</h2>
+      <h2 id="near-title">{{ cs.nearbyH2 | pick(T) | cap }}</h2>
       <p>{{ cs.nearbyIntro | pick(T) }}</p>
     </div>
     <ul class="nearby">
@@ -194,7 +183,7 @@ permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
 {% if city.zips.length %}
 <section class="sec" aria-labelledby="zip-title">
   <div class="wrap">
-    <h2 id="zip-title">Tree removal service areas in {{ city.city }}, {{ city.stateCode }}</h2>
+    <h2 id="zip-title">{{ cs.areasH2 | pick(T) | cap }}</h2>
     <p class="measure">{{ cs.areasIntro | pick(T) }} Part of our <a href="/">nationwide tree removal service</a>; questions? <a href="/contact/">Contact us</a>.</p>
     <ul class="zips" aria-label="ZIP codes served in {{ city.city }}">
       {% for z in city.zips %}<li>{{ z }}</li>{% endfor %}
