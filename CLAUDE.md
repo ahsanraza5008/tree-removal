@@ -3,7 +3,7 @@
 ## Business
 - Name: Tree Removal Pros
 - Phone: (877) 624-0382 (tel:+18776240382)
-- Domain: none yet, hosted free on Vercel. `src/_data/business.json` → `domain` is a placeholder (`tree-removal-pros.vercel.app`); change it to the real Vercel URL or custom domain. It feeds canonicals, OG, schema, sitemap and robots.
+- Domain: resolved at build time by lib/site.js: SITE_URL env → VERCEL_PROJECT_PRODUCTION_URL (set by Vercel) → business.json `domain` (local fallback). Never hard-code the domain in templates; use {{ site.origin }}.
 - Niche: tree removal
 - Primary Keyword: tree removal (in every meta title)
 - Secondary Keywords: emergency tree removal, stump grinding, dead tree removal, fallen tree removal, tree removal cost
@@ -25,6 +25,8 @@
 - [x] All cities built: 30,976 city pages + 51 state pages + 5 main pages
 
 ## Notes
+- URL format: lowercase, trailing slash everywhere (vercel.json trailingSlash: true). 404 page is noindex with no canonical.
+- Same-name towns in one state use `label` ("Marion (Grant)") in title, description and H1 so all three stay unique.
 - Cities come from data/us-cities-dataset.json (31,257 entries, user-supplied). Puerto Rico (281) excluded by request.
 - `npm run cities` regenerates src/_data/cities.json offline: slugs (collisions get -county), countyLabel,
   8 nearest same-state cities, and `v`, a variant slot 0..14 coloured so neighbouring cities never share one.

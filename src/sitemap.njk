@@ -4,11 +4,11 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://{{ business.domain }}/</loc></url>
-<url><loc>https://{{ business.domain }}/services/</loc></url>
-<url><loc>https://{{ business.domain }}/service-areas/</loc></url>
-<url><loc>https://{{ business.domain }}/about/</loc></url>
-<url><loc>https://{{ business.domain }}/contact/</loc></url>
-{% for s in states %}<url><loc>https://{{ business.domain }}/{{ s.slug }}/</loc></url>
-{% endfor %}{% for c in cityPages %}<url><loc>https://{{ business.domain }}/{{ c.stateSlug }}/{{ c.slug }}/</loc></url>
+<url><loc>{{ site.origin }}/</loc></url>
+<url><loc>{{ site.origin }}/services/</loc></url>
+<url><loc>{{ site.origin }}/service-areas/</loc></url>
+<url><loc>{{ site.origin }}/about/</loc></url>
+<url><loc>{{ site.origin }}/contact/</loc></url>
+{% for s in states %}<url><loc>{{ site.origin }}/{{ s.slug }}/</loc></url>
+{% endfor %}{% for c in cityPages %}<url><loc>{{ site.origin }}/{{ c.stateSlug }}/{{ c.slug }}/</loc></url>
 {% endfor %}</urlset>

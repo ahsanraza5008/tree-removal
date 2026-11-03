@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ metaTitle }}</title>
 <meta name="description" content="{{ metaDescription }}">
-<link rel="canonical" href="https://{{ business.domain }}{{ page.url }}">
+{% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<link rel="canonical" href="{{ site.origin }}{{ page.url }}">{% endif %}
 <meta property="og:title" content="{{ metaTitle }}">
 <meta property="og:description" content="{{ metaDescription }}">
-<meta property="og:url" content="https://{{ business.domain }}{{ page.url }}">
+{% if not noindex %}<meta property="og:url" content="{{ site.origin }}{{ page.url }}">{% endif %}
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:site_name" content="{{ business.name }}">
 <meta name="twitter:card" content="summary">

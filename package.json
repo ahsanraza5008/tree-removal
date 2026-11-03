@@ -8,7 +8,8 @@
     "preview": "PREVIEW=1 npx @11ty/eleventy --serve --incremental",
     "cities": "node scripts/build-cities.js",
     "check": "node scripts/check-build.js",
-    "check:schema": "node scripts/check-schema.js"
+    "check:schema": "node scripts/check-schema.js",
+    "crawl": "node scripts/crawl.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

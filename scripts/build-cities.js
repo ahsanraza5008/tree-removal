@@ -7,6 +7,7 @@
  *
  * Adds per city:
  *   slug          unique within the state (collisions get -county appended)
+ *   label         city name, plus "(County)" when another town in the state has the same name
  *   countyLabel   how the county reads in a sentence ("Collier County", "Orleans Parish")
  *   rank          position in the source file (source is ordered by population)
  *   nearbyCities  8 nearest cities in the same state (pre-computed here, never at build time)
@@ -105,10 +106,15 @@ for (const i of order) {
   slot[i] = pick;
 }
 
-// ---- 4. write
+// ---- 4. label: towns sharing a name inside one state get their county in titles/descriptions/H1
+const nameCount = new Map();
+for (const c of cities) nameCount.set(`${c.stateCode}|${c.city}`, (nameCount.get(`${c.stateCode}|${c.city}`) || 0) + 1);
+for (const c of cities) c.label = nameCount.get(`${c.stateCode}|${c.city}`) > 1 && c.county ? `${c.city} (${c.county})` : c.city;
+
+// ---- 5. write
 const out = cities.map((c, i) => ({
   city: c.city, slug: c.slug, stateName: c.stateName, stateCode: c.stateCode, stateSlug: c.stateSlug,
-  county: c.county, countyLabel: countyLabel(c),
+  label: c.label, county: c.county, countyLabel: countyLabel(c),
   lat: c.lat, lng: c.lng, zips: c.zips, rank: c.rank, v: slot[i],
   nearbyCities: near[i].map(j => ({ city: cities[j].city, slug: cities[j].slug, stateCode: cities[j].stateCode })),
 }));
