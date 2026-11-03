@@ -35,7 +35,7 @@
   --step-2: 1.6rem;
   --step-3: clamp(1.9rem, 1.4rem + 2vw, 2.6rem);
   --step-4: clamp(2.4rem, 1.6rem + 3.6vw, 4rem);
-  --step-5: clamp(2.8rem, 1.7rem + 5vw, 5.4rem);
+  --step-5: clamp(2.6rem, 1.6rem + 4.2vw, 4.6rem);
 
   --spacing-section: clamp(3.5rem, 2.5rem + 4vw, 6.5rem);
   --spacing-gutter: 1rem;
@@ -168,7 +168,7 @@ h3 { font-size: var(--step-2); font-weight: 700; line-height: 1.1; }
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.2rem), 0 100%);
 }
 .hero .wrap { position: relative; display: grid; gap: 2rem; }
-.hero h1 { color: var(--color-on-dark); max-width: 15ch; margin-bottom: 1.1rem; }
+.hero h1 { color: var(--color-on-dark); max-width: 18ch; margin-bottom: 1.1rem; }
 .hero--compact h1 { font-size: var(--step-4); max-width: 22ch; }
 .hero .lede { color: var(--color-on-dark); max-width: 34rem; }
 .hero .lede strong { color: var(--color-accent); font-weight: 700; }
@@ -449,3 +449,4 @@ h3 { font-size: var(--step-2); font-weight: 700; line-height: 1.1; }
 .note--on-dark { color: var(--color-on-dark-muted); }
 .contact-card .big-num { white-space: nowrap; font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.4rem); }
 .two-col--wide .contact-card { align-self: start; }
+img.rings { width: 100%; height: auto; }

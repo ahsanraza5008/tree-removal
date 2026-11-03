@@ -53,7 +53,24 @@ const hero = `<svg class="rings" viewBox="0 0 400 400" xmlns="http://www.w3.org/
 </g>
 <path class="kerf" d="M400 150 L262 204 L400 258" fill="none"/>
 </svg>`;
-fs.writeFileSync(path.join(R, "src/_includes/svg/rings.njk"), hero);
+// Standalone, cached file (one download for all 31k pages). Its own <style> keeps the one-time
+// draw-in animation; colours mirror the CSS tokens in style.css.
+const standalone = hero
+  .replace('<svg class="rings" ', '<svg ')
+  .replace(' aria-hidden="true" focusable="false"', ' width="400" height="400"')
+  .replace("<defs>", `<style>
+.bark{fill:#4a3526}.wood{fill:#ecdcbc}.ring{stroke:#8a6847;stroke-linecap:round}
+.check{stroke:#4a3526;stroke-width:1.4;opacity:.55}.pith{fill:#4a3526}
+.kerf{stroke:#f2c418;stroke-width:4;stroke-linejoin:round}
+@media (prefers-reduced-motion:no-preference){
+.ring{stroke-dasharray:1200;stroke-dashoffset:1200;animation:g 1.6s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i)*70ms)}
+.kerf{stroke-dasharray:340;stroke-dashoffset:340;animation:g .7s ease-out 1.5s forwards}
+.wood,.bark{animation:f .6s ease-out both}}
+@keyframes g{to{stroke-dashoffset:0}}@keyframes f{from{opacity:0}}
+</style><defs>`)
+  .replace(/(\d+\.\d)\d*/g, "$1");
+fs.writeFileSync(path.join(R, "src/assets/img/rings.svg"), standalone);
+fs.writeFileSync(path.join(R, "src/_includes/svg/rings.njk"), '<img class="rings" src="/assets/img/rings.svg" alt="" width="400" height="400" decoding="async">');
 
 // ---- small mark (logo + favicon): simplified, 64x64
 seed = 11;
@@ -69,5 +86,5 @@ const inline = mark(false)
   .replace(/fill="#4a3526"/, 'class="m-bark"').replace(/fill="#ecdcbc"/, 'class="m-wood"')
   .replace(/fill="none" stroke="#6b4b33" stroke-width="2"/g, 'class="m-ring"')
   .replace(/fill="#6b4b33"/, 'class="m-pith"').replace(/fill="#f2c418"/, 'class="m-notch"');
-fs.writeFileSync(path.join(R, "src/_includes/svg/mark.njk"), inline);
+fs.writeFileSync(path.join(R, "src/_includes/svg/mark.njk"), '<img class="mark" src="/favicon.svg" alt="" width="38" height="38">');
 console.log("art written");

@@ -22,7 +22,10 @@ console.log(`sitemap URLs: ${smCount}  ${smCount === expected ? "OK" : "MISMATCH
 
 // 2. per-page checks
 const issues = { missing: 0, titleLong: 0, titleNoKw: 0, descLong: 0, tokens: 0, jsonld: 0, faqMismatch: 0 };
-const paras = new Map(); // url -> Set of paragraphs
+const paras = new Map(); // url -> Set of paragraph hashes
+const FIXED = /^(Tree removal, stump grinding and storm cleanup for homeowners|Ranges are typical|Limbs chipped|Lean, decay|The crew protects|Where the tree)/;
+const fnv = str => { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
+const cityByUrl = new Map(cities.map(c => [`/${c.stateSlug}/${c.slug}/`, c]));
 const titles = new Map();
 function check(url, isCity) {
   const html = read(url);
@@ -43,7 +46,12 @@ function check(url, isCity) {
   }
   const visible = [...html.matchAll(/<div class="faq-a"><p>([\s\S]*?)<\/p>/g)].map(m => decode(m[1]));
   if (faqLd.length !== visible.length || faqLd.some((a, i) => a !== visible[i])) issues.faqMismatch++;
-  if (isCity) paras.set(url, new Set([...html.matchAll(/<p[^>]*>([^<]{60,})/g)].map(m => m[1])));
+  if (isCity) {
+    // keep only hashes of the varied paragraphs, with the city/county names stripped
+    const c = cityByUrl.get(url);
+    paras.set(url, new Set([...html.matchAll(/<p[^>]*>([^<]{120,})/g)].map(m => m[1])
+      .filter(p => !FIXED.test(p)).map(p => fnv(p.split(c.city).join("#").split(c.countyLabel).join("@")))));
+  }
 }
 check("/", false); check("/services/", false); check("/service-areas/", false); check("/about/", false); check("/contact/", false);
 for (const s of states) check(`/${s.slug}/`, false);
@@ -52,20 +60,16 @@ console.log("issues:", issues);
 const dupTitles = [...titles.values()].filter(n => n > 1).length;
 console.log(`duplicate titles: ${dupTitles} (same-name towns across states share patterns; within-state duplicates are not expected)`);
 
-// 3. neighbours sharing a long paragraph (city name differs, so compare with names stripped)
+// 3. neighbours sharing a varied paragraph
 let shared = 0, pairs = 0;
 const byKey = new Map(cities.map(x => [x.stateCode + "|" + x.slug, x]));
-const FIXED = /^(Ranges are typical|Limbs chipped|Lean, decay|The crew protects|Where the tree)/;
-const strip = (s, c) => s.split(c.city).join("#").split(c.countyLabel).join("@");
 for (const c of cities) {
-  const a = paras.get(`/${c.stateSlug}/${c.slug}/`); if (!a) continue;
-  const A = new Set([...a].map(p => strip(p, c)));
+  const A = paras.get(`/${c.stateSlug}/${c.slug}/`); if (!A) continue;
   for (const n of c.nearbyCities.slice(0, 4)) {
     const nc = byKey.get(n.stateCode + "|" + n.slug);
-    const b = paras.get(`/${nc.stateSlug}/${nc.slug}/`); if (!b) continue;
+    const B = paras.get(`/${nc.stateSlug}/${nc.slug}/`); if (!B) continue;
     pairs++;
-    for (const p of b) if (!FIXED.test(p) && p.length > 120 && A.has(strip(p, nc))) { shared++; break; }
+    for (const h of B) if (A.has(h)) { shared++; break; }
   }
-  if (pairs > 20000) break;
 }
 console.log(`neighbour pairs checked: ${pairs}, pairs sharing a varied paragraph: ${shared}`);
