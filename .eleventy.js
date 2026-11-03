@@ -19,8 +19,14 @@ const citiesByState = {};
 for (const c of allCities) (citiesByState[c.stateCode] = citiesByState[c.stateCode] || []).push(c);
 for (const k in citiesByState) citiesByState[k].sort((a, b) => a.city.localeCompare(b.city));
 
-const { fill, pick } = require("./lib/spin.js");
-const schema = require("./lib/schema.js");
+const { fill, pick } = require("./src/_lib/spin.js");
+const schema = require("./src/_lib/schema.js");
+
+// Asset fingerprint: changes only when CSS or artwork changes. Lets browsers cache /assets/* for a
+// year (see vercel.json) and still pick up a new version right after a deploy.
+const assetV = require("crypto").createHash("md5")
+  .update(["src/assets/css/style.css", "src/assets/img/rings.svg", "src/assets/img/favicon.svg"].map(f => fs.readFileSync(f)).join(""))
+  .digest("hex").slice(0, 10);
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -31,6 +37,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("cityPages", cityPages);
   eleventyConfig.addGlobalData("citiesByState", citiesByState);
   eleventyConfig.addGlobalData("buildYear", new Date().getFullYear());
+  eleventyConfig.addGlobalData("assetV", assetV);
 
   eleventyConfig.addFilter("slug", str =>
     String(str).toLowerCase().replace(/&/g, "and").replace(/\s+/g, "-").replace(/[^\w-]/g, "").replace(/-+/g, "-")

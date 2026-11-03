@@ -2,6 +2,24 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
+# Search engines: full access
 User-agent: *
 Allow: /
+
+# SEO-tool and bulk scraper crawlers: blocked to save hosting requests on a 30k-page site.
+# They do not send visitors. Remove a block if you want that tool to audit the site.
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: Barkrowler
+User-agent: PetalBot
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: magpie-crawler
+Disallow: /
+
 Sitemap: {{ site.origin }}/sitemap.xml

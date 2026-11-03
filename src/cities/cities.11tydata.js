@@ -1,5 +1,5 @@
 // O(n) computed fields for city pages only. nearbyCities is pre-computed offline (scripts/build-cities.js).
-const { capped, fitted, pick, fill, cityTokens } = require("../../lib/spin.js");
+const { capped, fitted, pick, fill, cityTokens } = require("../_lib/spin.js");
 const contexts = require("../_data/stateContexts.js");
 const cs = require("../_data/citySpintax.js");
 

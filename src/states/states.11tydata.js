@@ -1,4 +1,4 @@
-const { pick, fill, capped, stateTokens } = require("../../lib/spin.js");
+const { pick, fill, capped, stateTokens } = require("../_lib/spin.js");
 const contexts = require("../_data/stateContexts.js");
 const sp = require("../_data/stateSpintax.js");
 const states = require("../_data/states.json");

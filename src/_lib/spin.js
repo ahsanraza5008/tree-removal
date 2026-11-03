@@ -1,5 +1,5 @@
 // Shared spintax helpers used by .eleventy.js filters and the state/city computed data.
-const business = require("../src/_data/business.json");
+const business = require("../_data/business.json");
 
 function hash(str) {
   let h = 2166136261;

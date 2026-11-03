@@ -2,8 +2,8 @@
 // each page adds its own WebPage, BreadcrumbList, Service and FAQPage nodes that reference it.
 // Rules: no reviews, no ratings, no invented address/geo for the business. All internal URLs are
 // absolute and use the site's trailing-slash format (/, /services/, /florida/, /florida/naples/).
-const business = require("../src/_data/business.json");
-const services = require("../src/_data/services.js");
+const business = require("../_data/business.json");
+const services = require("../_data/services.js");
 
 const SITE = require("./site.js").origin;
 const abs = path => SITE + path; // path always starts with "/" and ends with "/" (or "/#fragment")

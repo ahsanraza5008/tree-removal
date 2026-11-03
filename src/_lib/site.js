@@ -8,7 +8,7 @@
 //                          builds get it too, so preview pages still canonicalise to production.
 //   3. business.json "domain"  local fallback for builds on your own machine.
 // Canonicals, og:url, JSON-LD, sitemap.xml and robots.txt all read from here.
-const business = require("../src/_data/business.json");
+const business = require("../_data/business.json");
 
 const raw = process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL || business.domain;
 const host = String(raw).trim().replace(/^https?:\/\//i, "").replace(/\/.*$/, "").toLowerCase();
