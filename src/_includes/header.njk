@@ -1,0 +1,16 @@
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="{{ business.name }} home">{% include "svg/mark.njk" %}<span class="brand-name">{{ business.name }}</span></a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="/services/" {% if page.url == "/services/" %}aria-current="page"{% endif %}>Services</a></li>
+        <li><a href="/service-areas/" {% if page.url == "/service-areas/" %}aria-current="page"{% endif %}>Service Areas</a></li>
+        <li><a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a></li>
+        <li><a href="/contact/" {% if page.url == "/contact/" %}aria-current="page"{% endif %}>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="header-call" href="tel:{{ business.phoneHref }}" aria-label="Call {{ business.phone }}">{% include "svg/phone.njk" %}<span class="num">{{ business.phone }}</span></a>
+    <button class="menu-btn" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+  </div>
+</header>

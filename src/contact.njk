@@ -1,0 +1,44 @@
+---
+layout: base.njk
+permalink: /contact/
+metaTitle: "Contact for Tree Removal | Call 24/7"
+metaDescription: "Call for tree removal, emergency storm help, stump grinding or trimming. Lines open 24/7 with same day service and certified arborists. One number, every state."
+---
+{% from "breadcrumb.njk" import breadcrumb %}
+<section class="hero hero--compact" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Contact" }]) }}
+      <h1 id="hero-title">Call for Tree Removal, Day or Night</h1>
+      <p class="lede">The fastest way to get a tree handled is a phone call. No forms, no waiting for a callback.</p>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+<section class="sec" aria-labelledby="call-title">
+  <div class="wrap two-col">
+    <div class="contact-card">
+      <h2 id="call-title">Phone</h2>
+      <a class="big-num" href="tel:{{ business.phoneHref }}">{{ business.phone }}</a>
+      <p class="live">Answered 24/7, including weekends and holidays</p>
+      <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Tap to call</a>
+    </div>
+    <div class="prose">
+      <h2>Have this ready when you call</h2>
+      <ul>
+        <li>Your address or ZIP code</li>
+        <li>Whether the tree is standing, leaning, split or already down</li>
+        <li>What it is near or resting on: house, car, fence, wires</li>
+        <li>A rough height and trunk width, if you can tell</li>
+        <li>Whether you want stump grinding or to keep the wood</li>
+      </ul>
+      <p>If a power line is involved, call your utility company first. Tree crews cannot work near energized lines until the utility makes them safe.</p>
+      <p>Coverage details are on the <a href="/service-areas/">service areas</a> page.</p>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "ContactPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/contact/",
+  "mainEntity": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/",
+  "contactPoint": { "@type": "ContactPoint", "telephone": "{{ business.phone }}", "contactType": "customer service", "areaServed": "US", "availableLanguage": "English" } } }
+</script>

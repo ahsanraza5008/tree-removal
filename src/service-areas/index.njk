@@ -1,0 +1,79 @@
+---
+layout: base.njk
+permalink: /service-areas/
+metaTitle: "Tree Removal Service Areas | All 50 States + DC"
+metaDescription: "Find tree removal in your state and city. Coverage across all 50 states and DC with 24/7 emergency help, same day service and certified arborists. Call now."
+---
+{% from "cta-block.njk" import ctaBlock %}
+{% from "breadcrumb.njk" import breadcrumb %}
+{% set totalCities = 0 %}{% for s in states %}{% set totalCities = totalCities + s.cityCount %}{% endfor %}
+
+<section class="hero hero--compact" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Service Areas" }]) }}
+      <h1 id="hero-title">Tree Removal Service Areas Across All 50 States</h1>
+      <p class="lede">Choose your state below, then your city. Every city page explains the local conditions that bring trees down there and what removal typically costs.</p>
+      <div class="hero-actions">
+        <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+        <p class="micro">Don't see your town? Call anyway. Coverage reaches well beyond the listed cities.</p>
+      </div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="states-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="states-title">Find tree removal in your state</h2>
+      <p>{{ states | length }} states and districts, {{ totalCities | toLocale }} cities and towns.</p>
+    </div>
+    <ul class="ledger">
+      {% for s in states %}
+      <li><a href="/{{ s.slug }}/">{{ s.name }} <span>{{ s.cityCount | toLocale }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ ctaBlock("Faster than scrolling: call and say your ZIP code.", "We'll confirm coverage and a crew time on the same call.", business) }}
+
+<section class="sec sec--alt" aria-labelledby="how-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="how-title">How local service works</h2>
+      <p class="answer">{{ business.name }} connects homeowners with experienced local tree removal crews in their area through one phone number.</p>
+      <p>When you call, you speak with a person who takes down the details of the tree, the damage and your address, and connects you with an available crew that works in your area. We do not keep an office in every city listed on this site. The pages exist to help you understand local conditions and reach help quickly.</p>
+    </div>
+    <div class="prose">
+      <h3>What that means for you</h3>
+      <ul>
+        <li>One number for every state and city on the site, answered 24/7.</li>
+        <li>The crew that does the work quotes the job before any cutting starts.</li>
+        <li>Availability, pricing and credentials vary by location and by crew. Ask the crew about insurance and certification for your job; a reputable one will show you.</li>
+        <li>Calling is free and there is no obligation to book.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">Your state is on the list. So is your tree.</h2>
+    <p>Emergency removal, planned takedowns, stump grinding and storm cleanup. One call to reach a crew.</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/service-areas/", "description": "{{ metaDescription | jsonStr | safe }}" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{ business.domain }}/" },
+      { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://{{ business.domain }}/service-areas/" } ] }
+  ]
+}
+</script>

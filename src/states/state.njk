@@ -1,0 +1,156 @@
+---
+layout: base.njk
+pagination:
+  data: states
+  size: 1
+  alias: state
+permalink: "/{{ state.slug }}/"
+---
+{% from "cta-block.njk" import ctaBlock %}
+{% from "breadcrumb.njk" import breadcrumb %}
+{% set sp = stateSpintax %}
+{% set list = citiesByState[state.code] or [] %}
+{% set groups = list | letterGroups %}
+{% set featured = list | topByRank(10) %}
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Service Areas", url: "/service-areas/" }, { name: state.name }]) }}
+      <h1 id="hero-title">{{ sp.h1 | pick(T) }}</h1>
+      <p class="lede">{{ sp.intro | pick(T) }}</p>
+      <ul class="proof">
+        {% for p in sp.proof[(T.v) % 4] %}<li>{{ p | fill(T) }}</li>{% endfor %}
+      </ul>
+      <div class="hero-actions">
+        <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+        <p class="micro"><span class="live">Lines open now.</span> {{ sp.micro | pick(T) }}</p>
+      </div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+{{ ctaBlock(sp.cta1 | pick(T), sp.cta1Sub | pick(T), business) }}
+
+<section class="sec" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="svc-title">{{ sp.servicesH2 | pick(T) | cap }}</h2>
+      <p>{{ sp.servicesIntro | pick(T) | safe }}</p>
+    </div>
+    <ul class="svc-list">
+      {% for s in services %}
+      {% set key = "service_" + (s.id | replace("-", "_")) %}
+      <li><h3><a href="/services/#{{ s.id }}">{{ s.name }}</a></h3><p>{{ sp[key] | pick(T) }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--wood" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="why-title">{{ sp.whyH2 | pick(T) | cap }}</h2>
+      <p class="muted">{{ sp.whyOpener | pick(T) }}</p>
+    </div>
+    <ul class="usps">
+      {% for k in ["why1", "why2", "why3", "why4"] %}
+      <li><h3>{{ business.usps[loop.index0] }}</h3><p>{{ sp[k] | pick(T) }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--alt" aria-labelledby="cond-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="cond-title">{{ sp.conditionsH2 | pick(T) | cap }}</h2>
+      <p>{{ sp.cond_season | pick(T) }}</p>
+    </div>
+    <div class="conditions">
+      <div class="condition"><h3>{{ sp.cond_climate_h | pick(T) }}</h3><p>{{ stateCtx.climate }}</p></div>
+      <div class="condition"><h3>{{ sp.cond_soil_h | pick(T) }}</h3><p>{{ stateCtx.soil }}</p></div>
+      <div class="condition"><h3>{{ sp.cond_trees_h | pick(T) }}</h3><p>{{ stateCtx.trees }}</p></div>
+      <div class="condition"><h3>{{ sp.cond_pests_h | pick(T) }}</h3><p>{{ stateCtx.pests }}</p></div>
+    </div>
+  </div>
+</section>
+
+{{ ctaBlock(sp.cta2 | pick(T), sp.cta2Sub | pick(T), business) }}
+
+<section class="sec" aria-labelledby="cities-title" id="cities">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="cities-title">{{ sp.citiesH2 | pick(T) | cap }}</h2>
+      <p>{{ sp.citiesIntro | pick(T) }}</p>
+      {% if list.length > 12 %}
+      <ul class="featured-cities" aria-label="Largest service areas in {{ state.name }}">
+        {% for c in featured %}<li><a href="/{{ c.stateSlug }}/{{ c.slug }}/">Tree removal in {{ c.city }}</a></li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  {% if groups.length > 1 %}
+  <nav class="az-bar" aria-label="Cities by first letter">
+    <div class="wrap"><ol>{% for g in groups %}<li><a href="#letter-{{ g.letter | lower }}">{{ g.letter }}</a></li>{% endfor %}</ol></div>
+  </nav>
+  {% endif %}
+  <div class="wrap">
+    {% for g in groups %}
+    <div class="az-group" id="letter-{{ g.letter | lower }}">
+      <h3 aria-label="Cities starting with {{ g.letter }}">{{ g.letter }}</h3>
+      <ul>{% for c in g.cities %}<li><a href="/{{ c.stateSlug }}/{{ c.slug }}/">{{ c.city }}</a></li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="sec sec--alt" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="faq-title">{{ sp.faqH2 | pick(T) | cap }}</h2></div>
+    <div class="faq">
+      {% set faqItems = [] %}
+      {% for f in sp.faq %}
+      {% set fq = f.q | fill(T) %}{% set fa = f.a | pick(T, "faq" + loop.index) %}
+      {% set faqItems = (faqItems.push({ q: fq, a: fa }), faqItems) %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary><h3>{{ fq }}</h3></summary>
+        <div class="faq-a"><p>{{ fa }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">{{ sp.finalH2 | pick(T) }}</h2>
+    <p>{{ sp.finalP | pick(T) }}</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "{{ business.name }}",
+      "telephone": "{{ business.phone }}",
+      "url": "https://{{ business.domain }}{{ page.url }}",
+      "image": "https://{{ business.domain }}/apple-touch-icon.png",
+      "areaServed": { "@type": "State", "name": "{{ state.name }}" },
+      "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Tree services in {{ state.name }}", "itemListElement": [{% for s in services %}{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{ s.name }}" } }{% if not loop.last %},{% endif %}{% endfor %}] }
+    },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{ business.domain }}/" },
+      { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://{{ business.domain }}/service-areas/" },
+      { "@type": "ListItem", "position": 3, "name": "{{ state.name }}", "item": "https://{{ business.domain }}{{ page.url }}" } ] },
+    { "@type": "FAQPage", "mainEntity": [{% for f in faqItems %}
+      { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
+    ] }
+  ]
+}
+</script>

@@ -1,0 +1,166 @@
+---
+layout: base.njk
+permalink: /
+metaTitle: "Tree Removal Nationwide | 24/7 Emergency Help"
+metaDescription: "Tree removal across the U.S. with same day service, certified arborists and full cleanup. Tree on the house or a dead tree leaning? Call 24/7 for help."
+homeFaqs:
+  - q: "How fast can someone come out for tree removal?"
+    a: "For a tree on a house, car or driveway, the 24/7 line dispatches a crew as soon as it is safe to work, often within hours. For planned removals, same day service is available in many areas, and most other jobs are booked within a few days."
+  - q: "What does tree removal cost?"
+    a: "Most residential tree removals land between about $300 and $2,000. Height, trunk diameter, how close the tree is to the house or lines, access for equipment, and whether stump grinding is added all move the price. You get a quote before any cutting starts."
+  - q: "Does homeowners insurance pay to remove a fallen tree?"
+    a: "Usually yes when a covered event such as wind or lightning drops a tree onto an insured structure like the house, garage or fence. Trees that fall in the open without hitting anything, or trees that were dead and neglected, often are not covered. Photograph everything before work begins and call your insurer early."
+  - q: "Do I need a permit to remove a tree on my property?"
+    a: "It depends on your city or county. Many places protect large or heritage trees and certain species, and some require a permit only above a set trunk diameter. Dead or hazardous trees are often exempt. Check with your local planning or code office before scheduling a non-emergency removal."
+  - q: "Is the stump removed too?"
+    a: "Removal leaves a stump a few inches high unless stump grinding is added. Grinding takes the stump below the surface so you can plant or mow over it. Ask for both in one visit; it is cheaper than a second trip."
+  - q: "What is included in cleanup?"
+    a: "Full cleanup means branches are chipped, logs are hauled or stacked where you want them, and the lawn, driveway and beds are raked and blown clear. If you want to keep firewood or wood chips, say so when you call."
+---
+{% from "cta-block.njk" import ctaBlock %}
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">Same Day Tree Removal Across the U.S., 24/7 When It's an Emergency</h1>
+      <p class="lede">A tree came down on the roof. A dead oak is leaning toward the driveway. A storm left limbs hanging over the yard. <strong>Call now</strong> and certified arborists plan the cut, the crew takes the tree down safely, and full cleanup is part of the job.</p>
+      <ul class="proof">
+        <li>Emergency line answered 24/7, nights and weekends included</li>
+        <li>Same day service for urgent and planned removals</li>
+        <li>Certified arborists assess the tree before the saw starts</li>
+        <li>Full cleanup: limbs chipped, wood hauled, yard raked</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+        <p class="micro"><span class="live">Lines open now.</span> Tell us what happened and where the tree is. You'll get a time for the crew and a price before any work begins.</p>
+      </div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="problems-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="problems-title">Which of these is happening at your place?</h2>
+      <p>These are the calls we take every day. If one sounds like yours, you are in the right place.</p>
+    </div>
+    <ul class="problems">
+      <li><q>A tree fell on my house.</q><p>Keep everyone out of the rooms under the impact point and away from the roofline. The tree is lifted off in sections so nothing drops back onto the structure, and photos are taken for your insurance claim.</p></li>
+      <li><q>There's a dead tree leaning over the driveway.</q><p>Dead wood is brittle and unpredictable to fell. It is usually taken down from the top in short pieces rather than dropped whole.</p></li>
+      <li><q>The storm left a big limb hanging up in the tree.</q><p>A broken limb caught in the canopy can let go without warning. Stay out from under it until it is cut down.</p></li>
+      <li><q>The roots are lifting the patio and the tree's too close to the house.</q><p>An arborist checks whether pruning or root work can save it, or whether removal is the safer call.</p></li>
+      <li><q>I'm tired of mowing around this old stump.</q><p>Stump grinding takes it below ground level in a single visit, ready for grass or a new planting bed.</p></li>
+    </ul>
+  </div>
+</section>
+
+{{ ctaBlock("Sounds like yours? Describe it on the phone and get a crew time.", "No forms, no waiting for a callback. A person answers.", business) }}
+
+<section class="sec sec--alt" aria-labelledby="services-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="services-title">Tree removal and the jobs that come with it</h2>
+      <p>One call covers the tree, the stump and the mess. Read how each job is done on the <a href="/services/">tree removal services</a> page.</p>
+    </div>
+    <ul class="svc-list">
+      {% for s in services %}
+      <li>
+        <h3><a href="/services/#{{ s.id }}">{{ s.name }}</a></h3>
+        <p>{{ s.line }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--wood" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="why-title">Why homeowners call us first</h2>
+    </div>
+    <ul class="usps">
+      <li><h3>24/7 Emergency Help</h3><p>A person answers at 2 a.m. after a storm, the same as at noon on a Tuesday.</p></li>
+      <li><h3>Same Day Service</h3><p>Urgent removals are worked the day you call whenever conditions are safe to cut.</p></li>
+      <li><h3>Certified Arborists</h3><p>Lean, decay and rigging are assessed by someone trained to read a tree, not guessed at.</p></li>
+      <li><h3>Full Cleanup</h3><p>Branches chipped, logs hauled or stacked, and the yard raked before the crew leaves.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="coverage-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="coverage-title">Tree removal services by state</h2>
+      <p>Pick your state to find your city. Each city page covers local storm patterns, common trees and what removal typically costs there. The full list lives on our <a href="/service-areas/">service areas</a> page.</p>
+    </div>
+    <ul class="state-tiles">
+      {% for s in states %}
+      <li><a href="/{{ s.slug }}/"><span class="code">{{ s.code }}</span><span class="name">{{ s.name }}</span><span class="count">{{ s.cityCount | toLocale }} cities</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--dark" aria-labelledby="wait-title">
+  <div class="wrap two-col two-col--wide">
+    <div>
+      <h2 id="wait-title">A tree just came down. What do you do right now?</h2>
+      <p class="answer">Get people and pets clear, stay away from any wire, then call. Everything else can wait for the crew.</p>
+      <p>Professional help makes sense whenever a tree or limb is touching a structure, hanging over somewhere people walk, leaning more than it used to, or is too big to cut safely from the ground. A chainsaw on a loaded trunk is the most common way homeowners get hurt after a storm.</p>
+      <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+    </div>
+    <ol class="wait-list">
+      <li><strong>Move everyone away</strong><span>Stay out of rooms under the impact point and off the roof.</span></li>
+      <li><strong>Treat every wire as live</strong><span>If a line is down or touching the tree, call your utility or 911 first.</span></li>
+      <li><strong>Take photos</strong><span>Wide shots and close-ups of the tree, the damage and the stump area for your insurer.</span></li>
+      <li><strong>Don't cut a loaded trunk</strong><span>Wood under tension can spring sideways. Leave it for a rigged crew.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="faq-title">Tree removal questions people ask before they call</h2>
+    </div>
+    <div class="faq">
+      {% for f in homeFaqs %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary><h3>{{ f.q }}</h3></summary>
+        <div class="faq-a"><p>{{ f.a }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">Get the tree down and the yard back today.</h2>
+    <p>Emergency removals, planned takedowns, stump grinding and storm cleanup across the country. Call, describe the tree, get a time.</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "{{ business.name }}",
+      "telephone": "{{ business.phone }}",
+      "url": "https://{{ business.domain }}/",
+      "logo": "https://{{ business.domain }}/apple-touch-icon.png",
+      "areaServed": { "@type": "Country", "name": "United States" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in homeFaqs %}
+        { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,229 @@
+---
+layout: base.njk
+pagination:
+  data: cityPages
+  size: 1
+  alias: city
+permalink: "/{{ city.stateSlug }}/{{ city.slug }}/"
+---
+{% from "cta-block.njk" import ctaBlock %}
+{% from "breadcrumb.njk" import breadcrumb %}
+{% set cs = citySpintax %}
+{% set near = city.nearbyCities %}
+{% set nearUrl = "/" + city.stateSlug + "/" %}
+
+{# 1–3. Hero: H1, above-fold intro, primary call #}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Service Areas", url: "/service-areas/" }, { name: city.stateName, url: nearUrl }, { name: city.city }]) }}
+      <h1 id="hero-title">{{ h1 }}</h1>
+      <p class="lede">{{ cs.intro | pick(T) }}</p>
+      <ul class="proof">
+        {% for p in cs.proof[T.v % 3] %}<li>{{ p | fill(T) }}</li>{% endfor %}
+      </ul>
+      <div class="hero-actions">
+        <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+        <p class="micro"><span class="live">Lines open now.</span> {{ cs.micro | pick(T) }}</p>
+      </div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+{{ ctaBlock(cs.cta1 | pick(T), cs.cta1Sub | pick(T), business) }}
+
+{# 4. USP blocks #}
+<section class="sec sec--wood" aria-label="Why call for tree removal in {{ city.city }}">
+  <div class="wrap">
+    <ul class="usps">
+      {% for k in ["usp1", "usp2", "usp3", "usp4"] %}
+      <li><h3>{{ business.usps[loop.index0] }}</h3><p>{{ cs[k] | pick(T) }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# 5. About #}
+<section class="sec" aria-labelledby="about-title">
+  <div class="wrap two-col two-col--wide">
+    <div class="prose">
+      <h2 id="about-title">{{ cs.aboutH2 | pick(T) | cap }}</h2>
+      <p>{{ cs.about | pick(T) | safe }}</p>
+      {% if near.length >= 2 %}<p>The same crews also handle <a href="/{{ city.stateSlug }}/{{ near[0].slug }}/">tree removal in {{ near[0].city }}</a> and <a href="/{{ city.stateSlug }}/{{ near[1].slug }}/">emergency tree removal in {{ near[1].city }}</a>.</p>{% endif %}
+    </div>
+    <div class="contact-card">
+      <p class="live">{{ city.city }}, {{ city.stateCode }} line open 24/7</p>
+      <a class="big-num" href="tel:{{ business.phoneHref }}">{{ business.phone }}</a>
+      <p>{{ cs.cta1Sub | pick(T, "card") }}</p>
+    </div>
+  </div>
+</section>
+
+{# 6. Services #}
+<section class="sec sec--alt" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="svc-title">{{ cs.servicesH2 | pick(T) | cap }}</h2></div>
+    <ul class="svc-list">
+      {% for s in services %}
+      {% set key = "service_" + (s.id | replace("-", "_")) %}
+      <li><h3><a href="/services/#{{ s.id }}">{{ s.name }}</a></h3><p>{{ cs[key] | pick(T) }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# 7. CTA #2 #}
+{{ ctaBlock(cs.cta2 | pick(T), cs.cta2Sub | pick(T), business) }}
+
+{# 8. Why choose us #}
+<section class="sec" aria-labelledby="why-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="why-title">{{ cs.whyH2 | pick(T) | cap }}</h2>
+      <p class="answer">{{ cs.whyOpener | pick(T) }}</p>
+    </div>
+    <ul class="why-list">
+      {% for k in ["why1", "why2", "why3", "why4", "why5"] %}<li>{{ cs[k] | pick(T) | cap }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# 9. Process #}
+<section class="sec sec--dark" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="process-title">{{ cs.processH2 | pick(T) | cap }}</h2>
+      <p>{{ cs.processOpener | pick(T) }}</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Call and describe it</h3><p>Where the tree is in {{ city.city }}, what it's near, and whether it's standing, leaning or down.</p></li>
+      <li><h3>Arborist assessment</h3><p>Lean, decay, roots and targets are checked. You get the plan and price before any cutting.</p></li>
+      <li><h3>Controlled removal</h3><p>The crew protects the lawn and structures, then takes the tree down in the planned order.</p></li>
+      <li><h3>Cleanup and grind</h3><p>Limbs chipped, wood hauled or stacked, stump ground if requested, yard raked.</p></li>
+    </ol>
+    <p class="note note--on-dark">{{ cs.processCloser | pick(T) }}</p>
+  </div>
+</section>
+
+{# 10. CTA #3 #}
+{{ ctaBlock(cs.cta3 | pick(T), cs.cta1Sub | pick(T, "c3"), business) }}
+
+{# 11. Pricing #}
+<section class="sec" aria-labelledby="price-title">
+  <div class="wrap two-col two-col--wide">
+    <div>
+      <h2 id="price-title">{{ cs.pricingH2 | pick(T) | cap }}</h2>
+      <table class="price-table">
+        <thead><tr><th scope="col">Job</th><th scope="col">Typical range</th></tr></thead>
+        <tbody>
+          <tr><td>Small tree removal<small>Under about 30 ft, open access</small></td><td>$200–$500</td></tr>
+          <tr><td>Medium tree removal<small>About 30–60 ft</small></td><td>$500–$1,200</td></tr>
+          <tr><td>Large or hazardous tree removal<small>60 ft+, near structures, rigging or crane</small></td><td>$1,200–$2,500+</td></tr>
+          <tr><td>Stump grinding<small>Per stump, by diameter</small></td><td>$100–$400</td></tr>
+          <tr><td>Tree trimming &amp; pruning<small>Per tree</small></td><td>$250–$800</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Ranges are typical national figures for residential work and are a guide only. Your price is confirmed after the tree is assessed and before work starts.</p>
+    </div>
+    <div>
+      <p class="answer">{{ cs.pricingNote | pick(T) }}</p>
+    </div>
+  </div>
+</section>
+
+{# 12. CTA #4 #}
+{{ ctaBlock(cs.cta4 | pick(T), cs.cta2Sub | pick(T, "c4"), business) }}
+
+{# 13. Local conditions #}
+<section class="sec sec--alt" aria-labelledby="cond-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="cond-title">{{ cs.conditionsH2 | pick(T) | cap }}</h2></div>
+    <div class="conditions">
+      <div class="condition"><h3>{{ cs.cond_climate_h | pick(T) }}</h3><p>{{ cs.cond_climate | pick(T) }}</p></div>
+      <div class="condition"><h3>{{ cs.cond_soil_h | pick(T) }}</h3><p>{{ cs.cond_soil | pick(T) }}</p></div>
+      <div class="condition"><h3>{{ cs.cond_trees_h | pick(T) }}</h3><p>{{ cs.cond_trees | pick(T) }}</p></div>
+      <div class="condition"><h3>{{ cs.cond_pests_h | pick(T) }}</h3><p>{{ cs.cond_pests | pick(T) }}</p></div>
+    </div>
+  </div>
+</section>
+
+{# 14. FAQ — the same resolved strings feed the visible answers and the JSON-LD #}
+<section class="sec" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="faq-title">{{ cs.faqH2 | pick(T) | cap }}</h2></div>
+    <div class="faq">
+      {% set faqItems = [] %}
+      {% for f in cs.faq %}
+      {% set fq = f.q | fill(T) %}{% set fa = f.a | pick(T, "faq" + loop.index) %}
+      {% set faqItems = (faqItems.push({ q: fq, a: fa }), faqItems) %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary><h3>{{ fq }}</h3></summary>
+        <div class="faq-a"><p>{{ fa }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 15. Final CTA #}
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">{{ cs.finalH2 | pick(T) }}</h2>
+    <p>{{ cs.finalP | pick(T) }}</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+
+{# 16. Related cities #}
+{% if near.length %}
+<section class="sec sec--alt" aria-labelledby="near-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="near-title">Also serving these {{ city.stateName }} communities</h2>
+      <p>{{ cs.nearbyIntro | pick(T) }}</p>
+    </div>
+    <ul class="nearby">
+      {% for n in near %}<li><a href="/{{ city.stateSlug }}/{{ n.slug }}/">Tree removal in {{ n.city }}, {{ n.stateCode }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{# 17. Areas we serve (omitted when no ZIP data) #}
+{% if city.zips.length %}
+<section class="sec" aria-labelledby="zip-title">
+  <div class="wrap">
+    <h2 id="zip-title">Tree removal service areas in {{ city.city }}, {{ city.stateCode }}</h2>
+    <p class="measure">{{ cs.areasIntro | pick(T) }} Part of our <a href="/">nationwide tree removal service</a>; questions? <a href="/contact/">Contact us</a>.</p>
+    <ul class="zips" aria-label="ZIP codes served in {{ city.city }}">
+      {% for z in city.zips %}<li>{{ z }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "{{ business.name }}",
+      "telephone": "{{ business.phone }}",
+      "url": "https://{{ business.domain }}{{ page.url }}",
+      "image": "https://{{ business.domain }}/apple-touch-icon.png",
+      "areaServed": { "@type": "City", "name": "{{ city.city | jsonStr | safe }}, {{ city.stateCode }}" },
+      "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Tree services in {{ city.city | jsonStr | safe }}", "itemListElement": [{% for s in services %}{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{ s.name }}" } }{% if not loop.last %},{% endif %}{% endfor %}] }
+    },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{ business.domain }}/" },
+      { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://{{ business.domain }}/service-areas/" },
+      { "@type": "ListItem", "position": 3, "name": "{{ city.stateName }}", "item": "https://{{ business.domain }}{{ nearUrl }}" },
+      { "@type": "ListItem", "position": 4, "name": "{{ city.city | jsonStr | safe }}", "item": "https://{{ business.domain }}{{ page.url }}" } ] },
+    { "@type": "FAQPage", "mainEntity": [{% for f in faqItems %}
+      { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
+    ] }
+  ]
+}
+</script>

@@ -1,0 +1,17 @@
+{
+  "name": "tree-removal-pros",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "NODE_OPTIONS=--max-old-space-size=6144 npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --incremental",
+    "preview": "PREVIEW=1 npx @11ty/eleventy --serve --incremental",
+    "cities": "node scripts/build-cities.js",
+    "check": "node scripts/check-build.js"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "graceful-fs": "^4.2.11"
+  },
+  "engines": { "node": ">=18" }
+}

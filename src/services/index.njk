@@ -1,0 +1,196 @@
+---
+layout: base.njk
+permalink: /services/
+metaTitle: "Tree Removal Services | Certified Arborists, 24/7"
+metaDescription: "How professional tree removal works: arborist assessment, rigging, stump grinding, storm cleanup and what drives tree removal cost. Call 24/7 for same day help."
+svcFaqs:
+  - q: "Can a tree be removed without damaging the lawn?"
+    a: "Mostly, yes. Crews lay plywood or ground mats under heavy equipment, lower wood on ropes instead of dropping it, and keep trucks on the driveway where they can reach. Expect some shallow tire marks or flattened grass, which recover within a few weeks."
+  - q: "What happens to the wood after removal?"
+    a: "By default, branches are chipped and hauled and the trunk is cut and taken away. You can ask to keep firewood rounds cut to length, or a load of wood chips for mulch. Keeping wood on site often lowers the price because there is less to haul."
+  - q: "How does a crew remove a tree that is too close to the house to fell?"
+    a: "It is dismantled from the top down. A climber or bucket truck removes limbs, then the trunk is cut into short sections that are lowered on ropes through a friction device at the base. In tight spaces a crane can lift whole sections over the house."
+  - q: "Can a certified arborist tell me if a tree really needs to come down?"
+    a: "Yes. An arborist looks at lean, root plate movement, cavities, fungal growth at the base, cracks and dead sections of the crown. Some trees can be kept with pruning or cabling; others are already a hazard. You get a straight answer either way."
+  - q: "How long does a typical tree removal take?"
+    a: "A small or medium tree in open ground is often finished in one to three hours including cleanup. A large tree over a house, or several trees, can take a full day. Crane jobs and storm work depend on access and how much damage is involved."
+  - q: "How deep does stump grinding go?"
+    a: "Usually 6 to 12 inches below the soil surface, which is deep enough to lay sod or plant shrubs. Deeper grinding is possible for a new tree in the same spot or for construction, and should be requested in advance."
+---
+{% from "cta-block.njk" import ctaBlock %}
+{% from "breadcrumb.njk" import breadcrumb %}
+
+<section class="hero hero--compact" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "Services" }]) }}
+      <h1 id="hero-title">Tree Removal Services: How the Job Is Done and What to Expect</h1>
+      <p class="lede">A tree that has to come down is a weight problem as much as a cutting problem. Here is how certified arborists plan it, how crews take it down without hurting the house, and what you are paying for.</p>
+      <div class="hero-actions">
+        <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+        <p class="micro">24/7 for emergencies. Same day service for most planned work.</p>
+      </div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="involves-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="involves-title">What each service involves</h2>
+      <p>Six jobs, usually handled in a single visit. Most removals include at least two of them.</p>
+    </div>
+    {% for s in services %}
+    <article class="svc-detail" id="{{ s.id }}">
+      <h3>{{ s.name }}</h3>
+      <div>{% for para in s.detail %}<p>{{ para }}</p>{% endfor %}</div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{{ ctaBlock("Not sure which of these you need? Describe the tree and we'll tell you.", "Certified arborists on every assessment.", business) }}
+
+<section class="sec sec--alt" aria-labelledby="causes-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="causes-title">Why trees end up needing removal</h2>
+      <p class="answer">Almost always one of four things: the tree is dead or dying, it is structurally failing, it was damaged in a storm, or it is simply in the wrong place.</p>
+    </div>
+    <div class="prose">
+      <p><strong>Disease and pests.</strong> Emerald ash borer has killed ash trees across much of the eastern half of the country. Oak wilt, Dutch elm disease, pine beetles and root rot fungi do the same to other species. Once the canopy is more than about half dead, removal is usually the only option.</p>
+      <p><strong>Structural defects.</strong> Co-dominant trunks with a tight V-shaped union, deep cavities, cracks that open and close in the wind, and roots cut by past construction all weaken a tree long before it falls.</p>
+      <p><strong>Storm damage.</strong> Wind, ice and saturated soil snap trunks, split crowns and lift root plates. A tree that loses a large share of its crown often declines over the next few seasons even if it survives the storm.</p>
+      <p><strong>Location.</strong> Trees planted too close to the foundation, septic field, pool or driveway outgrow the space. Roots lift slabs and limbs grind against roofs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="diag-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="diag-title">How an arborist decides whether a tree should come down</h2>
+      <p class="answer">By looking for specific defects, not by guessing from size or age.</p>
+      <p>The assessment starts at the ground and works up. Soil heaving or cracking on one side of the trunk means the root plate is moving. Mushrooms or conks at the base point to internal decay. A sounding mallet and, if needed, a resistance drill show how much solid wood is left inside the trunk.</p>
+    </div>
+    <div class="prose">
+      <p>Higher up, the arborist checks for deadwood, cracks, cavities, weak branch unions and how the crown weight is distributed over the lean. They also look at the target: what the tree would hit if it failed. A defective tree over an empty field and the same tree over a bedroom are very different risks.</p>
+      <p>The outcome is one of three recommendations: leave it alone, prune or cable it to reduce the risk, or remove it. If removal is the answer, the same walk-around produces the rigging plan, the equipment list and the price.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--wood" aria-labelledby="options-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="options-title">Ways to take a tree down</h2>
+      <p>No single method is best. The right one depends on space, the condition of the wood and what is underneath.</p>
+    </div>
+    <ul class="usps">
+      <li><h3>Straight felling</h3><p>Fastest and cheapest. Needs a clear landing zone at least as long as the tree is tall.</p></li>
+      <li><h3>Sectional dismantling</h3><p>Climber or bucket truck removes the tree in pieces lowered on ropes. The standard method near houses.</p></li>
+      <li><h3>Crane removal</h3><p>Sections are cut and lifted out. Used over roofs, pools, or when dead wood is unsafe to climb.</p></li>
+      <li><h3>Pruning or cabling</h3><p>Sometimes the tree can stay. Removing weight or adding support cables can fix the problem.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="process-title">From your call to a clean yard</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Call and describe it</h3><p>Where the tree is, how big, what it is near, and whether it has already fallen. Photos help if you can send them.</p></li>
+      <li><h3>Arborist assessment</h3><p>The tree, the target and the access are checked on site. You get the plan and the price before any cutting.</p></li>
+      <li><h3>Controlled removal</h3><p>The crew sets up, protects the lawn and structures, and takes the tree down using the method planned.</p></li>
+      <li><h3>Cleanup and grind</h3><p>Limbs chipped, wood hauled or stacked, stump ground if requested, everything raked and blown.</p></li>
+    </ol>
+  </div>
+</section>
+
+{{ ctaBlock("Ready for step one? It's a phone call.", "Lines are open 24/7.", business) }}
+
+<section class="sec sec--alt" aria-labelledby="cost-title">
+  <div class="wrap two-col two-col--wide">
+    <div>
+      <h2 id="cost-title">What affects tree removal cost</h2>
+      <p class="answer">Size is only part of it. Risk and access usually matter more.</p>
+      <p>Two trees of the same height can differ by a thousand dollars. The one standing in an open backyard is felled in an hour. The one leaning over the roof, behind a fence with no truck access, needs a climber, rigging and twice the crew time.</p>
+      <p>You always get the price before work starts, and it covers the cleanup that is included in the job.</p>
+    </div>
+    <ul class="why-list">
+      <li><strong>Height and trunk diameter.</strong> More wood means more cutting and hauling.</li>
+      <li><strong>Proximity to structures and lines.</strong> Anything that rules out felling adds rigging time.</li>
+      <li><strong>Access.</strong> Whether a bucket truck, crane or chipper can reach the tree.</li>
+      <li><strong>Condition of the wood.</strong> Dead or rotten trees are slower and riskier to climb.</li>
+      <li><strong>Emergency timing.</strong> Night, weekend and storm callouts take crews off scheduled work.</li>
+      <li><strong>Extras.</strong> Stump grinding, firewood cutting or full haul-away of the trunk.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--dark" aria-labelledby="urgent-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="urgent-title">Signs a tree can't wait</h2>
+      <p class="answer">If any of these describe your tree, call the emergency line rather than booking a routine visit.</p>
+      <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+    </div>
+    <ol class="wait-list">
+      <li><strong>The lean changed suddenly</strong><span>Especially with cracked or raised soil on the far side of the trunk.</span></li>
+      <li><strong>A split runs down the trunk</strong><span>A fresh crack between two main stems can open fully in the next wind.</span></li>
+      <li><strong>A limb is hung up overhead</strong><span>Broken branches caught in the canopy over a roof, driveway or play area.</span></li>
+      <li><strong>It's already resting on something</strong><span>A house, car, fence or another tree. Don't try to pull it off.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="faq-title">Questions about how tree removal is done</h2></div>
+    <div class="faq">
+      {% for f in svcFaqs %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary><h3>{{ f.q }}</h3></summary>
+        <div class="faq-a"><p>{{ f.a }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+    <p class="note">Looking for local details? Find your state on the <a href="/service-areas/">tree removal service areas</a> page, or see popular city pages like <a href="/florida/miami/">tree removal in Miami</a> and <a href="/texas/houston/">tree removal in Houston</a>.</p>
+  </div>
+</section>
+
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">Talk to someone who can read the tree.</h2>
+    <p>Certified arborists, same day service and full cleanup. Emergency line open 24/7.</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "serviceType": "Tree removal",
+      "provider": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/" },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Tree services", "itemListElement": [{% for s in services %}{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{ s.name }}" } }{% if not loop.last %},{% endif %}{% endfor %}] }
+    },
+    { "@type": "WebPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/services/" },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{ business.domain }}/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://{{ business.domain }}/services/" } ] },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in svcFaqs %}
+        { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
+      ]
+    }
+  ]
+}
+</script>

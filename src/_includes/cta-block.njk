@@ -1,0 +1,11 @@
+{% macro ctaBlock(headline, subtext, business) %}
+<aside class="cta-strip" aria-label="Call {{ business.name }}">
+  <div class="wrap">
+    <div>
+      <p class="cta-headline">{{ headline }}</p>
+      {% if subtext %}<p class="cta-sub">{{ subtext }}</p>{% endif %}
+    </div>
+    <a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</aside>
+{% endmacro %}

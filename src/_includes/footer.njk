@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>{{ business.name }}</h2>
+        <p>Tree removal, stump grinding and storm cleanup for homeowners and property managers across the United States, with emergency lines open 24/7.</p>
+        <a class="footer-phone" href="tel:{{ business.phoneHref }}">{{ business.phone }}</a>
+      </div>
+      <div>
+        <h2>Services</h2>
+        <ul>
+          {% for s in services %}<li><a href="/services/#{{ s.id }}">{{ s.name }}</a></li>{% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/service-areas/">Service Areas</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal">&copy; <span data-year>{{ buildYear }}</span> {{ business.name }}. All rights reserved.</p>
+  </div>
+</footer>

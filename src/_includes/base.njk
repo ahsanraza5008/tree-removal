@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ metaTitle }}</title>
+<meta name="description" content="{{ metaDescription }}">
+<link rel="canonical" href="https://{{ business.domain }}{{ page.url }}">
+<meta property="og:title" content="{{ metaTitle }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:url" content="https://{{ business.domain }}{{ page.url }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ business.name }}">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="{{ business.themeColor }}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css?v=1">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+{% include "header.njk" %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "footer.njk" %}
+<div class="callbar" id="callbar">
+  <a class="btn-call" href="tel:{{ business.phoneHref }}" aria-label="Call {{ business.name }} at {{ business.phone }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+</div>
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

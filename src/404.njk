@@ -1,0 +1,17 @@
+---
+layout: base.njk
+permalink: /404.html
+eleventyExcludeFromCollections: true
+metaTitle: "Page Not Found | Tree Removal"
+metaDescription: "This page could not be found. Use the links to find tree removal in your city, or call 24/7 for emergency tree removal and same day service."
+---
+<section class="hero hero--compact" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">This page fell over.</h1>
+      <p class="lede">The address may have changed or been typed wrong. Head to the <a href="/">homepage</a>, find your city on the <a href="/service-areas/">service areas</a> page, or just call.</p>
+      <div class="hero-actions"><a class="btn-call" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a></div>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+{% macro breadcrumb(items) %}
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {% for it in items %}
+    <li>{% if it.url and not loop.last %}<a href="{{ it.url }}">{{ it.name }}</a>{% else %}<span aria-current="page">{{ it.name }}</span>{% endif %}</li>
+    {% endfor %}
+  </ol>
+</nav>
+{% endmacro %}

@@ -1,0 +1,308 @@
+[
+  {
+    "name": "Alabama",
+    "code": "AL",
+    "slug": "alabama",
+    "cityCount": 592
+  },
+  {
+    "name": "Alaska",
+    "code": "AK",
+    "slug": "alaska",
+    "cityCount": 355
+  },
+  {
+    "name": "Arizona",
+    "code": "AZ",
+    "slug": "arizona",
+    "cityCount": 461
+  },
+  {
+    "name": "Arkansas",
+    "code": "AR",
+    "slug": "arkansas",
+    "cityCount": 621
+  },
+  {
+    "name": "California",
+    "code": "CA",
+    "slug": "california",
+    "cityCount": 1598
+  },
+  {
+    "name": "Colorado",
+    "code": "CO",
+    "slug": "colorado",
+    "cityCount": 477
+  },
+  {
+    "name": "Connecticut",
+    "code": "CT",
+    "slug": "connecticut",
+    "cityCount": 185
+  },
+  {
+    "name": "Delaware",
+    "code": "DE",
+    "slug": "delaware",
+    "cityCount": 79
+  },
+  {
+    "name": "District of Columbia",
+    "code": "DC",
+    "slug": "district-of-columbia",
+    "cityCount": 1
+  },
+  {
+    "name": "Florida",
+    "code": "FL",
+    "slug": "florida",
+    "cityCount": 945
+  },
+  {
+    "name": "Georgia",
+    "code": "GA",
+    "slug": "georgia",
+    "cityCount": 670
+  },
+  {
+    "name": "Hawaii",
+    "code": "HI",
+    "slug": "hawaii",
+    "cityCount": 158
+  },
+  {
+    "name": "Idaho",
+    "code": "ID",
+    "slug": "idaho",
+    "cityCount": 236
+  },
+  {
+    "name": "Illinois",
+    "code": "IL",
+    "slug": "illinois",
+    "cityCount": 1456
+  },
+  {
+    "name": "Indiana",
+    "code": "IN",
+    "slug": "indiana",
+    "cityCount": 974
+  },
+  {
+    "name": "Iowa",
+    "code": "IA",
+    "slug": "iowa",
+    "cityCount": 1024
+  },
+  {
+    "name": "Kansas",
+    "code": "KS",
+    "slug": "kansas",
+    "cityCount": 738
+  },
+  {
+    "name": "Kentucky",
+    "code": "KY",
+    "slug": "kentucky",
+    "cityCount": 552
+  },
+  {
+    "name": "Louisiana",
+    "code": "LA",
+    "slug": "louisiana",
+    "cityCount": 489
+  },
+  {
+    "name": "Maine",
+    "code": "ME",
+    "slug": "maine",
+    "cityCount": 66
+  },
+  {
+    "name": "Maryland",
+    "code": "MD",
+    "slug": "maryland",
+    "cityCount": 532
+  },
+  {
+    "name": "Massachusetts",
+    "code": "MA",
+    "slug": "massachusetts",
+    "cityCount": 125
+  },
+  {
+    "name": "Michigan",
+    "code": "MI",
+    "slug": "michigan",
+    "cityCount": 740
+  },
+  {
+    "name": "Minnesota",
+    "code": "MN",
+    "slug": "minnesota",
+    "cityCount": 904
+  },
+  {
+    "name": "Mississippi",
+    "code": "MS",
+    "slug": "mississippi",
+    "cityCount": 426
+  },
+  {
+    "name": "Missouri",
+    "code": "MO",
+    "slug": "missouri",
+    "cityCount": 1081
+  },
+  {
+    "name": "Montana",
+    "code": "MT",
+    "slug": "montana",
+    "cityCount": 495
+  },
+  {
+    "name": "Nebraska",
+    "code": "NE",
+    "slug": "nebraska",
+    "cityCount": 593
+  },
+  {
+    "name": "Nevada",
+    "code": "NV",
+    "slug": "nevada",
+    "cityCount": 132
+  },
+  {
+    "name": "New Hampshire",
+    "code": "NH",
+    "slug": "new-hampshire",
+    "cityCount": 41
+  },
+  {
+    "name": "New Jersey",
+    "code": "NJ",
+    "slug": "new-jersey",
+    "cityCount": 655
+  },
+  {
+    "name": "New Mexico",
+    "code": "NM",
+    "slug": "new-mexico",
+    "cityCount": 520
+  },
+  {
+    "name": "New York",
+    "code": "NY",
+    "slug": "new-york",
+    "cityCount": 970
+  },
+  {
+    "name": "North Carolina",
+    "code": "NC",
+    "slug": "north-carolina",
+    "cityCount": 771
+  },
+  {
+    "name": "North Dakota",
+    "code": "ND",
+    "slug": "north-dakota",
+    "cityCount": 401
+  },
+  {
+    "name": "Ohio",
+    "code": "OH",
+    "slug": "ohio",
+    "cityCount": 1253
+  },
+  {
+    "name": "Oklahoma",
+    "code": "OK",
+    "slug": "oklahoma",
+    "cityCount": 839
+  },
+  {
+    "name": "Oregon",
+    "code": "OR",
+    "slug": "oregon",
+    "cityCount": 425
+  },
+  {
+    "name": "Pennsylvania",
+    "code": "PA",
+    "slug": "pennsylvania",
+    "cityCount": 1886
+  },
+  {
+    "name": "Rhode Island",
+    "code": "RI",
+    "slug": "rhode-island",
+    "cityCount": 31
+  },
+  {
+    "name": "South Carolina",
+    "code": "SC",
+    "slug": "south-carolina",
+    "cityCount": 473
+  },
+  {
+    "name": "South Dakota",
+    "code": "SD",
+    "slug": "south-dakota",
+    "cityCount": 482
+  },
+  {
+    "name": "Tennessee",
+    "code": "TN",
+    "slug": "tennessee",
+    "cityCount": 501
+  },
+  {
+    "name": "Texas",
+    "code": "TX",
+    "slug": "texas",
+    "cityCount": 1836
+  },
+  {
+    "name": "Utah",
+    "code": "UT",
+    "slug": "utah",
+    "cityCount": 332
+  },
+  {
+    "name": "Vermont",
+    "code": "VT",
+    "slug": "vermont",
+    "cityCount": 107
+  },
+  {
+    "name": "Virginia",
+    "code": "VA",
+    "slug": "virginia",
+    "cityCount": 680
+  },
+  {
+    "name": "Washington",
+    "code": "WA",
+    "slug": "washington",
+    "cityCount": 633
+  },
+  {
+    "name": "West Virginia",
+    "code": "WV",
+    "slug": "west-virginia",
+    "cityCount": 439
+  },
+  {
+    "name": "Wisconsin",
+    "code": "WI",
+    "slug": "wisconsin",
+    "cityCount": 792
+  },
+  {
+    "name": "Wyoming",
+    "code": "WY",
+    "slug": "wyoming",
+    "cityCount": 204
+  }
+]

@@ -1,0 +1,66 @@
+---
+layout: base.njk
+permalink: /about/
+metaTitle: "About Our Tree Removal Team | Certified Arborists"
+metaDescription: "How we handle tree removal: arborist-led assessments, careful rigging near homes, full cleanup and a 24/7 line for emergencies. Learn how we work, then call."
+---
+{% from "breadcrumb.njk" import breadcrumb %}
+{% from "cta-block.njk" import ctaBlock %}
+<section class="hero hero--compact" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      {{ breadcrumb([{ name: "Home", url: "/" }, { name: "About" }]) }}
+      <h1 id="hero-title">About Tree Removal Pros: How We Take Trees Down</h1>
+      <p class="lede">We do one thing: get problem trees down safely and leave the property clean. This page explains how we work so you know what to expect before you call.</p>
+    </div>
+    <div class="hero-art">{% include "svg/rings.njk" %}</div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="standards-title">
+  <div class="wrap two-col">
+    <div>
+      <h2 id="standards-title">The standards behind every job</h2>
+      <p class="answer">Read the tree first, protect what's around it, cut in control, and clean up as if we were never there.</p>
+    </div>
+    <div class="prose">
+      <p><strong>Assessment before price.</strong> Certified arborists look at lean, decay, crown weight and the target before a number is given. That is how a quote stays accurate on the day of the work.</p>
+      <p><strong>Rigging over guesswork.</strong> Near homes, trees come down in sections lowered on ropes or lifted by crane. Felling whole trees is reserved for open ground.</p>
+      <p><strong>Honest recommendations.</strong> If pruning or cabling will make a tree safe, you'll hear that, even though removal is the bigger job.</p>
+      <p><strong>Cleanup is part of the job.</strong> Chipping, hauling, raking and blowing are included, not an add-on at the end.</p>
+    </div>
+  </div>
+</section>
+
+{{ ctaBlock("Want an arborist's opinion on a specific tree? Ask on the phone.", "Same day service for most visits.", business) }}
+
+<section class="sec sec--wood" aria-labelledby="promise-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="promise-title">What you can count on when you call</h2></div>
+    <ul class="usps">
+      <li><h3>A person answers</h3><p>Day or night, a real person takes the details, including on weekends and storm nights.</p></li>
+      <li><h3>A price first</h3><p>No cutting starts until you've heard the plan and the cost.</p></li>
+      <li><h3>Insurance photos</h3><p>Storm jobs are photographed before and during work to support your claim.</p></li>
+      <li><h3>No pressure</h3><p>Ask questions, get the quote, and decide in your own time unless it's an emergency.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="learn-title">
+  <div class="wrap prose">
+    <h2 id="learn-title">Learn before you book</h2>
+    <p>We write our pages to be useful even if you never call. The <a href="/services/">tree removal services</a> guide explains removal methods, stump grinding and cost factors. Each city page in our <a href="/service-areas/">service areas</a> covers local storm patterns, common tree problems and typical pricing.</p>
+  </div>
+</section>
+
+<section class="call-band" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">Tell us about the tree.</h2>
+    <p>24/7 emergency help, same day service, certified arborists and full cleanup.</p>
+    <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
+  </div>
+</section>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "AboutPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/about/",
+  "about": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/" } }
+</script>

@@ -1,0 +1,34 @@
+{
+  "name": "Tree Removal Pros",
+  "phone": "(877) 624-0382",
+  "phoneHref": "+18776240382",
+  "domain": "tree-removal-pros.vercel.app",
+  "niche": "tree removal",
+  "primaryKeyword": "tree removal",
+  "secondaryKeywords": [
+    "emergency tree removal",
+    "stump grinding",
+    "dead tree removal",
+    "fallen tree removal",
+    "tree removal cost"
+  ],
+  "usps": [
+    "24/7 Emergency Help",
+    "Same Day Service",
+    "Certified Arborists",
+    "Full Cleanup"
+  ],
+  "services": [
+    "Tree Removal",
+    "Emergency Tree Removal",
+    "Stump Grinding",
+    "Tree Trimming & Pruning",
+    "Storm Damage Cleanup",
+    "Land & Lot Clearing"
+  ],
+  "urlStructure": "D",
+  "urlPattern": "/{stateSlug}/{citySlug}/",
+  "stateSpintaxVariants": 4,
+  "citySpintaxVariants": 15,
+  "themeColor": "#11251a"
+}
