@@ -170,27 +170,4 @@ svcFaqs:
   </div>
 </section>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "serviceType": "Tree removal",
-      "provider": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/" },
-      "areaServed": { "@type": "Country", "name": "United States" },
-      "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Tree services", "itemListElement": [{% for s in services %}{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{ s.name }}" } }{% if not loop.last %},{% endif %}{% endfor %}] }
-    },
-    { "@type": "WebPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/services/" },
-    { "@type": "BreadcrumbList", "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://{{ business.domain }}/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://{{ business.domain }}/services/" } ] },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [{% for f in svcFaqs %}
-        { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
-      ]
-    }
-  ]
-}
-</script>
+{{ "services" | schema({ url: page.url, title: metaTitle, desc: metaDescription, faqs: svcFaqs }) | safe }}

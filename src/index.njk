@@ -143,24 +143,4 @@ homeFaqs:
   </div>
 </section>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "{{ business.name }}",
-      "telephone": "{{ business.phone }}",
-      "url": "https://{{ business.domain }}/",
-      "logo": "https://{{ business.domain }}/apple-touch-icon.png",
-      "areaServed": { "@type": "Country", "name": "United States" }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [{% for f in homeFaqs %}
-        { "@type": "Question", "name": "{{ f.q | jsonStr | safe }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ f.a | jsonStr | safe }}" } }{% if not loop.last %},{% endif %}{% endfor %}
-      ]
-    }
-  ]
-}
-</script>
+{{ "home" | schema({ url: page.url, title: metaTitle, desc: metaDescription, faqs: homeFaqs }) | safe }}

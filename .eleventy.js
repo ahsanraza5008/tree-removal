@@ -20,6 +20,7 @@ for (const c of allCities) (citiesByState[c.stateCode] = citiesByState[c.stateCo
 for (const k in citiesByState) citiesByState[k].sort((a, b) => a.city.localeCompare(b.city));
 
 const { fill, pick } = require("./lib/spin.js");
+const schema = require("./lib/schema.js");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
@@ -35,6 +36,8 @@ module.exports = function (eleventyConfig) {
     String(str).toLowerCase().replace(/&/g, "and").replace(/\s+/g, "-").replace(/[^\w-]/g, "").replace(/-+/g, "-")
   );
   eleventyConfig.addFilter("where", (arr, key, val) => (arr || []).filter(item => item[key] === val));
+  // JSON-LD for a page: {{ "city" | schema({ url: page.url, ... }) | safe }}
+  eleventyConfig.addFilter("schema", (kind, d) => schema.build(kind, d));
   eleventyConfig.addFilter("cap", s => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s));
   eleventyConfig.addFilter("pick", pick);
   eleventyConfig.addFilter("toLocale", n => Number(n || 0).toLocaleString("en-US"));

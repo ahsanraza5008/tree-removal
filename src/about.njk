@@ -60,7 +60,4 @@ metaDescription: "How we handle tree removal: arborist-led assessments, careful 
     <a class="btn-call btn-call--big" href="tel:{{ business.phoneHref }}">{% include "svg/phone.njk" %}Call {{ business.phone }}</a>
   </div>
 </section>
-<script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "AboutPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/about/",
-  "about": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/" } }
-</script>
+{{ "about" | schema({ url: page.url, title: metaTitle, desc: metaDescription }) | safe }}

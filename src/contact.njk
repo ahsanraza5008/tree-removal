@@ -37,8 +37,4 @@ metaDescription: "Call for tree removal, emergency storm help, stump grinding or
     </div>
   </div>
 </section>
-<script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "ContactPage", "name": "{{ metaTitle }}", "url": "https://{{ business.domain }}/contact/",
-  "mainEntity": { "@type": "Organization", "name": "{{ business.name }}", "telephone": "{{ business.phone }}", "url": "https://{{ business.domain }}/",
-  "contactPoint": { "@type": "ContactPoint", "telephone": "{{ business.phone }}", "contactType": "customer service", "areaServed": "US", "availableLanguage": "English" } } }
-</script>
+{{ "contact" | schema({ url: page.url, title: metaTitle, desc: metaDescription }) | safe }}
