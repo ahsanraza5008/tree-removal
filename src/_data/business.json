@@ -2,7 +2,7 @@
   "name": "Tree Removal Pros",
   "phone": "(877) 624-0382",
   "phoneHref": "+18776240382",
-  "domain": "tree-removal-pros.vercel.app",
+  "domain": "treeremovalpros.vercel.app",
   "niche": "tree removal",
   "primaryKeyword": "tree removal",
   "secondaryKeywords": [
@@ -30,5 +30,7 @@
   "urlPattern": "/{stateSlug}/{citySlug}/",
   "stateSpintaxVariants": 4,
   "citySpintaxVariants": 15,
-  "themeColor": "#11251a"
+  "themeColor": "#11251a",
+  "googleSiteVerification": "sWRDcRtQ1qKCzwQ9XEFtgJ-LoNjyRW9op1C7w2iso8E",
+  "indexNowKey": "229fa7a0f7e54e8da2706984eee27a41"
 }

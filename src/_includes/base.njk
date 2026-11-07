@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ metaTitle }}</title>
 <meta name="description" content="{{ metaDescription }}">
+{% if business.googleSiteVerification %}<meta name="google-site-verification" content="{{ business.googleSiteVerification }}" />{% endif %}
 {% if noindex %}<meta name="robots" content="noindex, follow">{% else %}<link rel="canonical" href="{{ site.origin }}{{ page.url }}">{% endif %}
 <meta property="og:title" content="{{ metaTitle }}">
 <meta property="og:description" content="{{ metaDescription }}">
